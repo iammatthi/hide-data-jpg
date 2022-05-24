@@ -1,4 +1,6 @@
 import argparse
+import rsa
+from os.path import exists
 
 parser = argparse.ArgumentParser()
 action_subparser = parser.add_subparsers(dest='action', required=True)
@@ -15,6 +17,22 @@ decrypt.add_argument('--src', type=str, required=True)
 decrypt.add_argument('--file', type=str)
 
 delimiter = bytes.fromhex('FFD9')
+file_private_key = "private.key"
+file_public_key = "public.key"
+if exists(file_private_key) and exists(file_public_key):
+    with open(file_private_key, "rb") as fout:
+        privateKey = rsa.PrivateKey.load_pkcs1(fout.read())
+    with open(file_public_key, "rb") as fout:
+        publicKey = rsa.PublicKey.load_pkcs1(fout.read())
+else:
+    publicKey, privateKey = rsa.newkeys(512)
+    with open(file_private_key, "w+") as fin:
+        fin.write(privateKey.save_pkcs1().decode())
+
+    with open(file_public_key, "w+") as fin:
+        fin.write(publicKey.save_pkcs1().decode())
+
+
 
 args = parser.parse_args()
 if args.action == 'enc':
@@ -29,7 +47,8 @@ if args.action == 'enc':
                 with open(args.file, 'rb') as f:
                     fout.write(f.read())
             elif args.text:
-                fout.write(bytes(args.text, 'utf-8'))
+                data = args.text.encode()
+                fout.write(rsa.encrypt(data, publicKey))
 
             print("File encrypted")
 
@@ -44,4 +63,4 @@ elif args.action == 'dec':
                 fout.write(fin.read())
                 print("File decrypted")
         else:
-            print("Hidden text: " + fin.read().decode('utf-8'))
+            print("Hidden text: " + rsa.decrypt(fin.read(), privateKey).decode('utf-8'))
