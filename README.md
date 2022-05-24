@@ -32,7 +32,8 @@ To get a local copy up and running follow these simple example steps.
 python3 main.py keys -i image.jpg -o pub.jpg
 
 # Client 2
-# Generate Fernet key, encrypt it with the public key received (pub.jpg) and generate image with Fernet key hidden (sym.jpg)
+# Generate Fernet key, encrypt it with the public key received in the image (pub.jpg) and generate 
+# image (sym.jpg) with this encrypted key
 python3 main.py keys -p pub.jpg -i image.jpg -o sym.jpg
 
 # Client 1
