@@ -28,20 +28,20 @@ To get a local copy up and running follow these simple example steps.
 # image.jpg is an image on the disk
 
 # Client 1
-# Generate public key image
+# Generate public key image (pub.jpg)
 python3 main.py keys -i image.jpg -o pub.jpg
 
 # Client 2
-# Generate symmetric key image from public key image
+# Generate symmetric key image (sym.jpg) from public key image (pub.jpg)
 python3 main.py keys -p pub.jpg -i image.jpg -o sym.jpg
 
 # Client 1
-# Save symmetric key to file
+# Extract symmetric key from image (sym.jpg) and save it to disk
 python3 main.py keys -s sym.jpg
-# Create image with hidden data
+# Create image with hidden data (hidden.jpg)
 python3 main.py enc -i image.jpg -o hidden.jpg --text "Come stai?"
 
 # Client 2
-# Read hidden data from image
+# Read hidden data from image (hidden.jpg)
 python3 main.py dec -i hidden.jpg
 ```
