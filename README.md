@@ -40,7 +40,7 @@ python3 main.py keys -p pub.jpg -i image.jpg -o sym.jpg
 # Extract Fernet key from image (sym.jpg) and save it to disk
 python3 main.py keys -s sym.jpg
 # Create image with hidden data (hidden.jpg)
-python3 main.py enc -i image.jpg -o hidden.jpg --text "Come stai?"
+python3 main.py enc -i image.jpg -o hidden.jpg --text "Hi! How are you?"
 
 # Client 2
 # Read hidden data from image (hidden.jpg)
