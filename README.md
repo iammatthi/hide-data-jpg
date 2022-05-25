@@ -48,7 +48,7 @@ python3 main.py dec -i hidden.jpg
 ```
 
 ## How it works?
-Given that a JPG file ends with the `0xffd9` sequence, hidden data can be inserted after it (in the example is on row `00002280`).
+Given that a JPG file ends with the `0xffd9` sequence, hidden data can be inserted after it (in the example the jpg delimiter is on row `00002280`).
 ```sh
 > xxd hidden.jpg
 00000000: ffd8 ffe0 0010 4a46 4946 0001 0100 0001  ......JFIF......
