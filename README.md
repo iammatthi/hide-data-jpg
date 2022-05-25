@@ -48,7 +48,7 @@ python3 main.py dec -i hidden.jpg
 ```
 
 ## How it works?
-Given that a JPG file ends with the `0xffd9` sequence, hidden data can be inserted after it (in the example the jpg delimiter is on row `00002280`).
+Since a JPG file ends with the sequence `0xffd9`, hidden data can be inserted after it (in the example, the jpg delimiter is on line `00002280`).
 ```sh
 > xxd hidden.jpg
 00000000: ffd8 ffe0 0010 4a46 4946 0001 0100 0001  ......JFIF......
@@ -68,9 +68,9 @@ Given that a JPG file ends with the `0xffd9` sequence, hidden data can be insert
 000022e0: 396a 3561 7a51 3d3d                      9j5azQ==
 ```
 
-To improve security, the hidden data is encrypted by using Fernet symmetric encryption.
+To improve security, data is encrypted using Fernet symmetric encryption.
 
-The symmetric key used by such algorithm can be shared by using RSA 2048 bit asymmetric encryption as shown in the example in the _Usage_ section.
+The symmetric key used by this algorithm can be shared using 2048-bit RSA asymmetric encryption, as shown in the example in the _Usage_ section.
 
 
 
