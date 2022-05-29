@@ -61,7 +61,7 @@ Since a JPG file ends with the sequence `0xffd9`, hidden data can be inserted af
 
 To improve security, data is encrypted using Fernet symmetric encryption.
 
-The symmetric key used by this algorithm can be shared using 2048-bit RSA asymmetric encryption, as shown in the example in the _Usage_ section.
+The symmetric key used by this algorithm can be shared using 2048-bit RSA asymmetric encryption, as shown in the example in the <a href="#usage">Usage</a> section.
 
 ### Built With
 
