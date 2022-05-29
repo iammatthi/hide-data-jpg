@@ -35,20 +35,20 @@ def main():
     parser = argparse.ArgumentParser()
     action_subparser = parser.add_subparsers(dest='action', required=True)
 
-    encrypt = action_subparser.add_parser('enc')
-    encrypt.add_argument('-k', '--symmetric-key',
-                         type=str, default="symmetric.key")
-    encrypt.add_argument('-i', '--image', type=str, required=True)
-    encrypt.add_argument('-o', '--image-out', type=str, required=True)
-    encryption_data = encrypt.add_mutually_exclusive_group(required=True)
+    hide_action = action_subparser.add_parser('hide')
+    hide_action.add_argument('-k', '--symmetric-key',
+                             type=str, default="symmetric.key")
+    hide_action.add_argument('-i', '--image', type=str, required=True)
+    hide_action.add_argument('-o', '--image-out', type=str, required=True)
+    encryption_data = hide_action.add_mutually_exclusive_group(required=True)
     encryption_data.add_argument('--file', type=str)
     encryption_data.add_argument('--text', type=str)
 
-    decrypt = action_subparser.add_parser('dec')
-    decrypt.add_argument('-k', '--symmetric-key',
-                         type=str, default="symmetric.key")
-    decrypt.add_argument('-i', '--image', type=str, required=True)
-    decrypt.add_argument('--file', type=str)
+    extract_action = action_subparser.add_parser('extract')
+    extract_action.add_argument('-k', '--symmetric-key',
+                                type=str, default="symmetric.key")
+    extract_action.add_argument('-i', '--image', type=str, required=True)
+    extract_action.add_argument('--file', type=str)
 
     keys = action_subparser.add_parser('keys')
     keys.add_argument('-k', '--symmetric-key',
@@ -127,7 +127,7 @@ def main():
             hide(args.image, args.image_out, data)
             print("Public key image generated:", args.image_out)
 
-    elif args.action == 'enc':
+    elif args.action == 'hide':
         if path.exists(args.symmetric_key):
             # Read symmetric key from file
             with open(args.symmetric_key, "rb") as fin:
@@ -149,7 +149,7 @@ def main():
         hide(args.image, args.image_out, encrypted_data)
         print("Image generated:", args.image_out)
 
-    elif args.action == 'dec':
+    elif args.action == 'extract':
         if path.exists(args.symmetric_key):
             # Read symmetric key from file
             with open(args.symmetric_key, "rb") as fin:

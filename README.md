@@ -29,26 +29,28 @@ To get a local copy up and running follow these simple example steps.
 
 # Client 1
 # Generate RSA 2048 bit key pair and generate an image with the public key hidden (pub.jpg)
-python3 main.py keys -i image.jpg -o pub.jpg
+python3 app.py keys --image image.jpg --image-out pub.jpg
 
 # Client 2
-# Generate Fernet key, encrypt it with the public key received in the image (pub.jpg) and generate 
+# Generate Fernet key, encrypt it with the public key received in the image (pub.jpg) and generate
 # image (sym.jpg) with this encrypted key
-python3 main.py keys -p pub.jpg -i image.jpg -o sym.jpg
+python3 app.py keys --public-key-image pub.jpg --image image.jpg --image-out sym.jpg
 
 # Client 1
 # Extract Fernet key from image (sym.jpg) and save it to disk
-python3 main.py keys -s sym.jpg
+python3 app.py keys --symmetric-key-image sym.jpg
 # Create image with hidden data (hidden.jpg)
-python3 main.py enc -i image.jpg -o hidden.jpg --text "Hi! How are you?"
+python3 app.py hide --image image.jpg --image-out hidden.jpg --text "Hi! How are you?"
 
 # Client 2
 # Read hidden data from image (hidden.jpg)
-python3 main.py dec -i hidden.jpg
+python3 app.py extract --image hidden.jpg
 ```
 
 ## How it works?
+
 Since a JPG file ends with the sequence `0xffd9`, hidden data can be inserted after it (in the example, the jpg delimiter is on line `00002280`).
+
 ```sh
 > xxd hidden.jpg
 00000000: ffd8 ffe0 0010 4a46 4946 0001 0100 0001  ......JFIF......
@@ -71,6 +73,3 @@ Since a JPG file ends with the sequence `0xffd9`, hidden data can be inserted af
 To improve security, data is encrypted using Fernet symmetric encryption.
 
 The symmetric key used by this algorithm can be shared using 2048-bit RSA asymmetric encryption, as shown in the example in the _Usage_ section.
-
-
-
