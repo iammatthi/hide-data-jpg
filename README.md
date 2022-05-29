@@ -15,7 +15,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#how-it-works">How It Works?</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -36,7 +36,7 @@
 
 This project aims to use steganography to allow communication between two users to be hidden using JPG images.
 
-### How It Works?
+### How It Works
 
 Since a JPG file ends with the sequence `0xffd9`, hidden data can be inserted after it (in the example, the jpg delimiter is on line `00002280`).
 
