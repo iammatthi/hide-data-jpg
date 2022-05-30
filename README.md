@@ -32,7 +32,7 @@
 
 <!-- ABOUT THE PROJECT -->
 
-## About the project
+## About The Project
 
 This project aims to use steganography to allow communication between two users to be hidden using JPG images.
 
@@ -87,12 +87,11 @@ To get a local copy up and running follow these simple example steps.
 2. Move into the newly created folder
    ```sh
    cd hide-data-jpg
-   ```   
+   ```
 3. Install python packages
    ```sh
    pip3 install -r requirements.txt
    ```
-   
 
 <!-- USAGE EXAMPLES -->
 
@@ -106,8 +105,8 @@ To get a local copy up and running follow these simple example steps.
 python3 app.py keys --image image.jpg --image-out pub.jpg
 
 # Client 2
-# Generate Fernet key, encrypt it with the public key received in the image (pub.jpg) and generate
-# image (sym.jpg) with this encrypted key
+# Generate Fernet key, encrypt it with the public key received in the image (pub.jpg) and
+# generate image (sym.jpg) with this encrypted key
 python3 app.py keys --public-key-image pub.jpg --image image.jpg --image-out sym.jpg
 
 # Client 1
