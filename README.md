@@ -82,12 +82,17 @@ To get a local copy up and running follow these simple example steps.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/iammatthi/hide-data-jpg
+   git clone https://github.com/iammatthi/hide-data-jpg.git
    ```
-2. Install python packages
+2. Move into the newly created folder
+   ```sh
+   cd hide-data-jpg
+   ```   
+3. Install python packages
    ```sh
    pip3 install -r requirements.txt
    ```
+   
 
 <!-- USAGE EXAMPLES -->
 
