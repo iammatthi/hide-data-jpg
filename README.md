@@ -75,7 +75,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-- python 3
+- python 3+
 - pip3
 
 ### Installation
