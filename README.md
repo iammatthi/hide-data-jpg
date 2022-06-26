@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <h3 align="center">Hide Data JPG</h3>
+  <h3 align="center">Hide Data In JPG</h3>
 
   <p align="center">
     Hide data safely in a JPG image.
